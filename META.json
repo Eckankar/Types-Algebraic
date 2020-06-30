@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "Algebraic data types in perl",
    "author" : [
       "Sebastian Paaske T\u00f8rholm <sebbe@cpan.org>"
    ],
@@ -37,7 +37,10 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Keyword::Declare" : "0",
+            "Moops" : "0",
+            "PPR" : "0",
+            "perl" : "5.010"
          }
       },
       "test" : {
@@ -47,7 +50,21 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/Eckankar/Types-Algebraic/issues"
+      },
+      "homepage" : "https://github.com/Eckankar/Types-Algebraic",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/Eckankar/Types-Algebraic.git",
+         "web" : "https://github.com/Eckankar/Types-Algebraic"
+      }
+   },
    "version" : "0.01",
+   "x_contributors" : [
+      "Sebastian Paaske T\u00f8rholm <Eckankar@gmail.com>"
+   ],
    "x_generated_by_perl" : "v5.30.0",
    "x_serialization_backend" : "Cpanel::JSON::XS version 4.19",
    "x_spdx_expression" : "Artistic-1.0-Perl OR GPL-1.0-or-later",
