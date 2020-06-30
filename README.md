@@ -57,7 +57,7 @@ The cases are matched from the top down, and only the first matching case is run
 
 You can also create a default fallback case, which will always run if reached.
 
-    data Color = Red | Blue | Green | White | Black
+    data Color = Red | Blue | Green | White | Black;
     match ($color) {
         with (Red) { say "Yay, you picked my favorite color!"; }
         default    { say "Bah. You clearly have no taste."; }
