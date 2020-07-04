@@ -9,6 +9,8 @@ use Keyword::Declare;
 use Moops;
 use PPR;
 
+our $_RETURN_SENTINEL = \23;
+
 class ADT {
     has tag => (is => "ro", isa => Str);
     has values => (is => "ro", isa => ArrayRef);
@@ -28,7 +30,8 @@ sub import {
     Moops->import;
 
     keyword match (ParenthesesList $v, '{', ADTMatch* @body, '}') {
-        my $res .= $v . "->match(\n";
+        my $res = "{\n";
+        $res .= 'my @types_algebraic_match_result = '. $v . "->match(\n";
         for my $case (@body) {
             my $tag = $case->{tag};
             my $idents = $case->{identifiers};
@@ -42,9 +45,11 @@ sub import {
             my $args = join(", ", @idents);
             my $block = $case->{block};
 
-            $res .= "[ '$tag', $count, sub { my ($args) = \@_; $block } ],\n";
+            $res .= "[ '$tag', $count, sub { my ($args) = \@_; $block; return \$Types::Algebraic::_RETURN_SENTINEL; } ],\n";
         }
-        $res .= ');';
+        $res .= ");\n";
+        $res .= 'if (@types_algebraic_match_result != 1 || $types_algebraic_match_result[0] != $Types::Algebraic::_RETURN_SENTINEL) { return @types_algebraic_match_result };' . "\n";
+        $res .= "}\n";
         return $res;
     }
 
@@ -85,14 +90,12 @@ CODE
                 my ($tag, $argc, $f) = @$case;
                 confess("$tag requires $ARGS{$tag} arguments - pattern uses $argc") unless $ARGS{$tag} == $argc;
                 if ($tag eq $self->tag) {
-                    $f->($self->values->@*);
-                    return;
+                    return $f->($self->values->@*);
                 }
             }
             # default
             if (@$case == 1) {
-                $case->[0]->($self->values->@*);
-                return;
+                return $case->[0]->($self->values->@*);
             }
         }
     }
