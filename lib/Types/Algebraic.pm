@@ -1,7 +1,7 @@
 package Types::Algebraic;
 
 use strict;
-use 5.010;
+use 5.022;
 use warnings;
 our $VERSION = '0.01';
 

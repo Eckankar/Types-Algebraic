@@ -40,7 +40,7 @@
             "Keyword::Declare" : "0",
             "Moops" : "0",
             "PPR" : "0",
-            "perl" : "5.010"
+            "perl" : "5.022"
          }
       },
       "test" : {
