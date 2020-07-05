@@ -1,0 +1,10 @@
+language: perl
+perl:
+    - "5.10"
+    - "5.22"
+    - "5.26"
+    - "5.28"
+    - "5.30"
+install:
+    - "cpanm --quiet --notest --installdeps ."
+script: "prove -Ilib t"
