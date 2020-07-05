@@ -1,6 +1,7 @@
 Revision history for Types-Algebraic
 
 {{$NEXT}}
+        - Remove uses of postfix dereferencing, causing test failures when not enabled.
 
 0.01  2020-07-04 11:17:40 CEST
         - Initial release

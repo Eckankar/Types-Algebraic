@@ -90,12 +90,12 @@ CODE
                 my ($tag, $argc, $f) = @$case;
                 confess("$tag requires $ARGS{$tag} arguments - pattern uses $argc") unless $ARGS{$tag} == $argc;
                 if ($tag eq $self->tag) {
-                    return $f->($self->values->@*);
+                    return $f->(@{ $self->values });
                 }
             }
             # default
             if (@$case == 1) {
-                return $case->[0]->($self->values->@*);
+                return $case->[0]->(@{ $self->values });
             }
         }
     }
