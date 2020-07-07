@@ -3,7 +3,7 @@ package Types::Algebraic;
 use strict;
 use 5.022;
 use warnings;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Keyword::Declare;
 use Moops;
