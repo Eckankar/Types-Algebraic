@@ -45,7 +45,11 @@ sub import {
             my $args = join(", ", @idents);
             my $block = $case->{block};
 
-            $res .= "[ '$tag', $count, sub { my ($args) = \@_; $block; return \$Types::Algebraic::_RETURN_SENTINEL; } ],\n";
+            if ($tag) {
+                $res .= "[ '$tag', $count, sub { my ($args) = \@_; $block; return \$Types::Algebraic::_RETURN_SENTINEL; } ],\n";
+            } else {
+                $res .= "[ sub { $block; return \$Types::Algebraic::_RETURN_SENTINEL; } ],\n";
+            }
         }
         $res .= ");\n";
         $res .= 'if (@types_algebraic_match_result != 1 || $types_algebraic_match_result[0] != $Types::Algebraic::_RETURN_SENTINEL) { return @types_algebraic_match_result };' . "\n";

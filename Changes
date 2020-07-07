@@ -1,6 +1,7 @@
 Revision history for Types-Algebraic
 
 {{$NEXT}}
+        - Properly compile the default keyword.
 
 0.02  2020-07-05 15:27:13 CEST
         - Remove uses of postfix dereferencing, causing test failures when not enabled.
