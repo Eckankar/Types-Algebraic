@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Eckankar/Types-Algebraic.svg?branch=master)](https://travis-ci.org/Eckankar/Types-Algebraic)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/Types-Algebraic.png)](https://cpants.cpanauthors.org/dist/Types-Algebraic)
+
 # NAME
 
 Types::Algebraic - Algebraic data types in perl
