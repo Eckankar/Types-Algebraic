@@ -49,6 +49,12 @@
          }
       }
    },
+   "provides" : {
+      "Types::Algebraic" : {
+         "file" : "lib/Types/Algebraic.pm",
+         "version" : "0.03"
+      }
+   },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
