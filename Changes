@@ -1,6 +1,7 @@
 Revision history for Types-Algebraic
 
 {{$NEXT}}
+        - Handle return statements in both array and scalar contexts.
 
 0.04  2020-08-03 23:02:50 CEST
         - Implement equality and stringification operators.

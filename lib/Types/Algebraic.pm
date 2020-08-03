@@ -56,7 +56,7 @@ sub import {
 
     keyword match (ParenthesesList $v, '{', ADTMatch* @body, '}') {
         my $res = "{\n";
-        $res .= 'my @types_algebraic_match_result = '. $v . "->match(\n";
+        my $match_body = $v . "->match(\n";
         for my $case (@body) {
             my $tag = $case->{tag};
             my $idents = $case->{identifiers};
@@ -71,13 +71,22 @@ sub import {
             my $block = $case->{block};
 
             if ($tag) {
-                $res .= "[ '$tag', $count, sub { my ($args) = \@_; $block; return \$Types::Algebraic::_RETURN_SENTINEL; } ],\n";
+                $match_body .= "[ '$tag', $count, sub { my ($args) = \@_; $block; return \$Types::Algebraic::_RETURN_SENTINEL; } ],\n";
             } else {
-                $res .= "[ sub { $block; return \$Types::Algebraic::_RETURN_SENTINEL; } ],\n";
+                $match_body .= "[ sub { $block; return \$Types::Algebraic::_RETURN_SENTINEL; } ],\n";
             }
         }
-        $res .= ");\n";
-        $res .= 'if (@types_algebraic_match_result != 1 || $types_algebraic_match_result[0] != $Types::Algebraic::_RETURN_SENTINEL) { return @types_algebraic_match_result };' . "\n";
+        $match_body .= ");\n";
+
+        $res .= <<"EOF";
+    if (wantarray) {
+        my \@types_algebraic_match_result = $match_body;
+        if (\@types_algebraic_match_result != 1 || \$types_algebraic_match_result[0] != \$Types::Algebraic::_RETURN_SENTINEL) { return \@types_algebraic_match_result };
+    } else {
+        my \$types_algebraic_match_result = $match_body;
+        if (\$types_algebraic_match_result && \$types_algebraic_match_result != \$Types::Algebraic::_RETURN_SENTINEL) { return \$types_algebraic_match_result; }
+    }
+EOF
         $res .= "}\n";
         return $res;
     }
