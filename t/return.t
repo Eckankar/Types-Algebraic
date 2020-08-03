@@ -32,7 +32,7 @@ sub get_offset {
     }
 }
 
-is( get_offset(N), ( 1,  0), "offset N" );
-is( get_offset(E), ( 0,  1), "offset E" );
-is( get_offset(S), (-1,  0), "offset S" );
-is( get_offset(W), ( 0, -1), "offset W" );
+is_deeply( [ get_offset(N) ], [ 1,  0], "offset N" );
+is_deeply( [ get_offset(E) ], [ 0,  1], "offset E" );
+is_deeply( [ get_offset(S) ], [-1,  0], "offset S" );
+is_deeply( [ get_offset(W) ], [ 0, -1], "offset W" );
