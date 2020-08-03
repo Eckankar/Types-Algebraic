@@ -1,6 +1,8 @@
 Revision history for Types-Algebraic
 
 {{$NEXT}}
+
+0.04  2020-08-03 23:02:50 CEST
         - Implement equality and stringification operators.
         - Add provides section to CPAN meta.
 
