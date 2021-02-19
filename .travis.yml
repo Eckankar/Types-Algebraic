@@ -4,7 +4,6 @@ perl:
     - "5.26"
     - "5.28"
     - "5.30"
-    - "5.32"
 install:
     - "cpanm --quiet --notest --installdeps ."
 script: "prove -Ilib t"
