@@ -55,7 +55,7 @@
    "provides" : {
       "Types::Algebraic" : {
          "file" : "lib/Types/Algebraic.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       }
    },
    "release_status" : "stable",
@@ -70,7 +70,7 @@
          "web" : "https://github.com/Eckankar/Types-Algebraic"
       }
    },
-   "version" : "0.05",
+   "version" : "0.06",
    "x_contributors" : [
       "Sebastian Paaske T\u00f8rholm <Eckankar@gmail.com>"
    ],

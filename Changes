@@ -1,6 +1,8 @@
 Revision history for Types-Algebraic
 
 {{$NEXT}}
+
+0.06  2021-02-20 00:07:27 CET
         - Support nested patterns inside match statements.
           This required re-writing the match keyword to use Keyword::Simple instead of Keyword::Declare.
 

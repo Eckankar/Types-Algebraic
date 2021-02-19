@@ -3,7 +3,7 @@ package Types::Algebraic;
 use strict;
 use 5.022;
 use warnings;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use Carp qw(croak confess);
 use Data::Dumper;
