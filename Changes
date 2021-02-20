@@ -2,6 +2,7 @@ Revision history for Types-Algebraic
 
 {{$NEXT}}
         - Remove undeclared and unused use of Test::Exception for now. (Thanks eserte!)
+        - Bump version dependency for List::MoreUtils so we're guaranteed to have zip_unflatten. (Thanks eserte!)
 
 0.06  2021-02-20 00:07:27 CET
         - Support nested patterns inside match statements.
